@@ -46,6 +46,8 @@ import { defineConfig } from 'unocss-componentify'
 
 export default defineConfig({
   include: ['./src/components/**/*.vue'],
+  // Reset CSS stylesheets
+  resetCss: '@unocss/reset/tailwind.css',
   // This will be injected into css output
   userStyle: `./src/style.css`,
 
