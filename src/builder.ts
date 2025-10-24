@@ -11,7 +11,7 @@ import { basename, extname, join } from 'pathe'
 import { glob } from 'tinyglobby'
 import { createGenerator, toArray } from 'unocss'
 import { readUnoConfig, resolveConfig } from './config'
-import { DEFAULT_OUTPUT } from './constants'
+import { DEFAULT_OUTPUT, DEFAULT_RESET } from './constants'
 import { isDirectory, normalizeOutput } from './utils'
 
 const cache = new Map<string, string>()
@@ -32,14 +32,16 @@ async function createUnoGenerator({ options, userCSS }: {
   return generator
 }
 
-async function readResetCSS(): Promise<string> {
-  if (cache.has('@unocss/reset/tailwind.css'))
-    return cache.get('@unocss/reset/tailwind.css')!
+async function readResetCSS(options: Options): Promise<string> {
+  const { resetCSS = DEFAULT_RESET } = options
 
-  const resetCSS = await readFile(resolveModulePath('@unocss/reset/tailwind.css'), 'utf-8')
-  cache.set('@unocss/reset/tailwind.css', resetCSS)
+  if (cache.has(resetCSS))
+    return cache.get(resetCSS)!
 
-  return resetCSS
+  const content = await readFile(resolveModulePath(resetCSS), 'utf-8')
+  cache.set(resetCSS, content)
+
+  return content
 }
 
 async function generateCSS({ options, generator, userCSS, tokens }: {
@@ -52,7 +54,7 @@ async function generateCSS({ options, generator, userCSS, tokens }: {
   const unoResult = await generator.generate(tokens)
 
   // Compose the CSS
-  const resetCSS = await readResetCSS()
+  const resetCSS = await readResetCSS(options)
   const input = [
     resetCSS,
     userCSS?.toString() ?? '',

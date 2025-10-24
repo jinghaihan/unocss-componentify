@@ -30,13 +30,12 @@ pnpm unocss-componentify --include './src/components/**/*.vue' --output 'src/.ge
 
 ### CLI Options
 
-| Option | Alias | Description | Default |
-|--------|-------|-------------|---------|
-| `--cwd` | `-c` | Specify the current working directory | `process.cwd()` |
-| `--include` | `-n` | Glob pattern to match files | - |
-| `--user-style` | `-u` | Extra styles to be bundled into the generated CSS | - |
-| `--output` | `-o` | Output directory or file path | `src/.generated/css.ts` |
-| `--minify` | `-m` | Whether to minify the output CSS | `true` |
+- `--cwd` - Specify the current working directory (default: `process.cwd()`)
+- `--include` - Glob pattern to match files
+- `--reset-css` - Standard reset CSS stylesheets to be included (default: `@unocss/reset/tailwind.css`)
+- `--user-style` - Extra styles to be bundled into the generated CSS
+- `--output` - Output directory or file path (default: `src/.generated/css.ts`)
+- `--minify` - Whether to minify the output CSS (default: `true`)
 
 ## Configuration
 

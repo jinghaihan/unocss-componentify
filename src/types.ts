@@ -7,6 +7,11 @@ export interface CommandOptions {
    */
   include?: string | string[]
   /**
+   * Standard reset CSS stylesheets to be included
+   * https://unocss.dev/guide/style-reset
+   */
+  resetCSS?: string
+  /**
    * Extra Styles to be bundled into the generated
    */
   userStyle?: string

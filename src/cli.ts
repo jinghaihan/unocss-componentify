@@ -13,11 +13,12 @@ try {
 
   cli
     .command('', 'An agnostic UnoCSS generator that creates isolated styles for each component')
-    .option('--cwd, -c <cwd>', 'Specify the current working directory')
-    .option('--include, -n <patterns>', 'Glob pattern to match files')
-    .option('--user-style, -u <path>', 'Extra Styles to be bundled into the generated')
-    .option('--output, -o <output>', 'Output directory or file path')
-    .option('--minify, -m', 'Whether to minify the output CSS')
+    .option('--cwd <cwd>', 'Specify the current working directory')
+    .option('--include <patterns>', 'Glob pattern to match files')
+    .option('--reset-css <module>', 'Standard reset CSS stylesheets to be included')
+    .option('--user-style <path>', 'Extra Styles to be bundled into the generated')
+    .option('--output <output>', 'Output directory or file path')
+    .option('--minify', 'Whether to minify the output CSS')
     .allowUnknownOptions()
     .action(async (options: Partial<CommandOptions>) => {
       p.intro(`${c.yellow`${NAME} `}${c.dim`v${VERSION}`}`)
