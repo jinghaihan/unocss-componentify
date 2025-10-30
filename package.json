@@ -1,0 +1,88 @@
+{
+  "name": "unocss-webcomponent-helper",
+  "type": "module",
+  "version": "0.0.0",
+  "packageManager": "pnpm@10.20.0",
+  "description": "An agnostic UnoCSS generator that creates isolated styles for each component.",
+  "author": "jinghaihan",
+  "license": "MIT",
+  "homepage": "https://github.com/jinghaihan/unocss-webcomponent-helper#readme",
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/jinghaihan/unocss-webcomponent-helper.git"
+  },
+  "bugs": {
+    "url": "https://github.com/jinghaihan/unocss-webcomponent-helper/issues"
+  },
+  "keywords": [
+    "unocss",
+    "component",
+    "web-component",
+    "shadow-dom"
+  ],
+  "exports": {
+    ".": "./dist/index.mjs",
+    "./cli": "./dist/cli.mjs",
+    "./package.json": "./package.json"
+  },
+  "main": "./dist/index.mjs",
+  "module": "./dist/index.mjs",
+  "types": "./dist/index.d.mts",
+  "bin": {
+    "unocss-webcomponent-helper": "./bin/cli.mjs"
+  },
+  "files": [
+    "bin",
+    "dist"
+  ],
+  "scripts": {
+    "start": "tsx ./src/cli.ts",
+    "build": "unbuild",
+    "deps": "taze major -I",
+    "lint": "eslint",
+    "typecheck": "tsc --noEmit",
+    "test": "vitest",
+    "release": "bumpp",
+    "bootstrap": "pnpm install",
+    "prepare": "simple-git-hooks",
+    "prepublishOnly": "pnpm build"
+  },
+  "peerDependencies": {
+    "@unocss/reset": ">=0.65.0",
+    "unocss": ">=0.65.0"
+  },
+  "dependencies": {
+    "@clack/prompts": "catalog:node",
+    "ansis": "catalog:node",
+    "cac": "catalog:node",
+    "lightningcss": "catalog:style",
+    "pathe": "catalog:node",
+    "unconfig": "catalog:node"
+  },
+  "devDependencies": {
+    "@antfu/eslint-config": "catalog:lint",
+    "@antfu/utils": "catalog:utils",
+    "@types/node": "catalog:types",
+    "@unocss/config": "catalog:style",
+    "bumpp": "catalog:cli",
+    "chokidar": "catalog:node",
+    "eslint": "catalog:lint",
+    "exsolve": "catalog:node",
+    "lint-staged": "catalog:lint",
+    "magic-string": "catalog:utils",
+    "pncat": "catalog:cli",
+    "simple-git-hooks": "catalog:lint",
+    "taze": "catalog:cli",
+    "tinyglobby": "catalog:node",
+    "tsx": "catalog:script",
+    "typescript": "catalog:tsc",
+    "unbuild": "catalog:build",
+    "vitest": "catalog:test"
+  },
+  "simple-git-hooks": {
+    "pre-commit": "pnpm lint-staged"
+  },
+  "lint-staged": {
+    "*": "eslint --fix"
+  }
+}

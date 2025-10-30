@@ -1,0 +1,39 @@
+packages: []
+catalogs:
+  build:
+    unbuild: ^3.6.1
+  cli:
+    bumpp: ^10.3.1
+    pncat: ^0.7.4
+    taze: ^19.9.0
+  lint:
+    '@antfu/eslint-config': ^6.1.0
+    eslint: ^9.38.0
+    lint-staged: ^16.2.6
+    simple-git-hooks: ^2.13.1
+  node:
+    '@clack/prompts': ^0.11.0
+    ansis: ^4.2.0
+    cac: ^6.7.14
+    chokidar: ^4.0.3
+    exsolve: ^1.0.7
+    pathe: ^2.0.3
+    tinyglobby: ^0.2.15
+    unconfig: ^7.3.3
+  script:
+    tsx: ^4.20.6
+  style:
+    '@unocss/config': ^66.5.4
+    lightningcss: ^1.30.2
+  test:
+    vitest: ^4.0.5
+  tsc:
+    typescript: ^5.9.3
+  types:
+    '@types/node': ^24.9.2
+  utils:
+    '@antfu/utils': ^9.3.0
+    magic-string: ^0.30.21
+onlyBuiltDependencies:
+  - esbuild
+  - simple-git-hooks
